@@ -6,7 +6,7 @@ const session = require('express-session');
 const passport = require('passport')
 const methodOverride = require('method-override')
 const mealPrepRoutes = require('./routes/recipeRoutes');
-const userRoutes = require('./routes/userRoutes')
+const userRoutes = require('./routes/auth')
 
 require('dotenv').config();
 require('./config/database.js')

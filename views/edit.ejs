@@ -13,7 +13,7 @@
     <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST">
         Meal Name: <input name="mealName" type="text" value="<%= recipe.mealName %>">
         <br><br>
-        About: <input name="notes" type="text" value="<%= recipe.notes %>">
+        About: <textarea name="notes" type="text" value="<%= recipe.notes %>"></textarea>
         <br><br>
         Ingredients: <input name="ingredients" type="text" value="<%= recipe.ingredients %>">
         <br><br>
