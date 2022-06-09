@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
   
   router.get('/logout', function(req, res){
     req.logout();
-    res.redirect('/students');
+    res.redirect('/mealPrep');
   });
   
   module.exports = router;

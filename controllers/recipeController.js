@@ -13,8 +13,22 @@ function showMeal(req, res) {
 }
 
 function newMeal(req, res) {
-    res.render('new')
+    res.render('new', {AddIngredient})
 }
+
+const AddIngredient = () => {
+
+    let createIngredientField = document.createElement("input")
+    createIngredientField.setAttribute("name", "ingredients");
+    createIngredientField.setAttribute("type", "text")
+
+    let ingredientInputList = document.querySelectorAll(".ingre")
+    ingredientInputList.appendChild(createIngredientField)
+
+    console.log(ingredientInputList)
+    console.log('hit')
+
+    }
 
 function createMeal(req, res) {
     let newMeal = new Recipe(req.body)
@@ -45,5 +59,6 @@ module.exports = {
     createMeal,
     showEditMeal,
     editMeal,
-    deleteMeal
+    deleteMeal,
+    AddIngredient
 }

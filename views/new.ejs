@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
 
-    <h1>Add a Meal Prep</h1>
+            
+<h1>Add a Meal Prep</h1>
 
-    <form action="/mealPrep" method="POST">
-        Meal Name: <input name="mealName" type="text">
+<form action="/mealPrep" method="POST">
+    Meal Name: <input name="mealName" type="text">
+    <br><br>
+    About: <textarea name="notes" type="text"></textarea>
+    <br><br>
+    
+    <div class="ingredients">
+        Ingredients: 
+        <br>
+        <input class="ingre" name="ingredients" type="text">
+    </div>
+    <div>
+        <button type="button" id="ingreButton" onclick="AddIngredient()">ADD AN INGREDIENT</button>
+    </div>
+    
+
         <br><br>
-        About: <textarea name="notes" type="text"></textarea>
+
+        <div class="instructions">
+        Instructions: 
+        <br>
+        <textarea name="instructions" type="text"></textarea>
+        </div>
+
+        <div>
+            <button type="button" id="instrucButton" onclick="AddInstruction()">ADD AN INSTRUCTION</button>
+        </div>
+
         <br><br>
-        Ingredients: <input class="ingre" name="ingredients" type="text">
-        <!-- need to add a button: "ADD AN INGREDIENT" that creates an input form -->
+        Protein: <input name="protein" type="number" style="width: 4em">
         <br><br>
-        Instructions: <input name="instructions" type="text">
+        Fat: <input name="fat" type="number" style="width: 4em">
         <br><br>
-        Protein: <input name="protein" type="number">
+        Carbs: <input name="carbs" type="number" style="width: 4em">
         <br><br>
-        Fat: <input name="fat" type="number">
-        <br><br>
-        Carbs: <input name="carbs" type="number">
-        <br><br>
-        Calories: <input name="calories" type="number">
+        Calories: <input name="calories" type="number" style="width: 4em">
         <br><br>
         <input type="submit" value="CREATE MEAL">
     </form>
 
-    <div>
-        <button onclick="AddIngredient()">ADD INGREDIENT</button>
-    </div>
-
-    <script>
-
-            const AddIngredient = () => {
-
-            let createIngredientField = document.createElement("input")
-            createIngredientField.setAttribute("name", "ingredients");
-            createIngredientField.setAttribute("type", "text")
-
-            let ingredientInputList = document.querySelectorAll(".ingre")
-            ingredientInputList.appendChild(createIngredientField)
-
-            console.log(ingredientInputList)
-
-            }
-
-    </script>
+<script type="text/javascript" src="/dynamic.js"></script>
 
 
 </body>

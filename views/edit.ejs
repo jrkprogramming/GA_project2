@@ -13,19 +13,31 @@
     <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST">
         Meal Name: <input name="mealName" type="text" value="<%= recipe.mealName %>">
         <br><br>
-        About: <textarea name="notes" type="text" value="<%= recipe.notes %>"></textarea>
+        About: <textarea name="notes" type="text"><%= recipe.notes %></textarea>
         <br><br>
-        Ingredients: <input name="ingredients" type="text" value="<%= recipe.ingredients %>">
+
+        Ingredients: 
+        <% recipe.ingredients.map(function(meal, index){ %>
+            <br>
+            <input name="ingredients" type="text" value="<%= recipe.ingredients[index] %>">
+        <% }) %> 
+
         <br><br>
-        Instructions: <input name="instructions" type="text" value="<%= recipe.instructions %>">
+
+        Instructions: 
+        <% recipe.instructions.map(function(meal, index){ %>
+            <br>
+            <textarea name="instructions" type="text"><%= recipe.instructions[index] %></textarea>
+        <% }) %> 
+
         <br><br>
-        Protein: <input name="protein" type="number" value="<%= recipe.protein %>">
+        Protein: <input name="protein" type="number" value="<%= recipe.protein %>" style="width: 4em">
         <br><br>
-        Fat: <input name="fat" type="number" value="<%= recipe.fat %>">
+        Fat: <input name="fat" type="number" value="<%= recipe.fat %>" style="width: 4em">
         <br><br>
-        Carbs: <input name="carbs" type="number" value="<%= recipe.carbs %>">
+        Carbs: <input name="carbs" type="number" value="<%= recipe.carbs %>" style="width: 4em">
         <br><br>
-        Calories: <input name="calories" type="number" value="<%= recipe.calories %>">
+        Calories: <input name="calories" type="number" value="<%= recipe.calories %>" style="width: 4em">
         <br><br>
         <input type="submit" value="SAVE CHANGES">
     </form>
