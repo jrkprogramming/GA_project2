@@ -13,9 +13,13 @@
 <h1>Add a Meal Prep</h1>
 
 <form action="/mealPrep" method="POST">
+
     Meal Name: <input name="mealName" type="text">
+
     <br><br>
+
     About: <textarea name="notes" type="text"></textarea>
+
     <br><br>
     
     <div class="ingredients">
@@ -23,6 +27,7 @@
         <br>
         <input class="ingre" name="ingredients" type="text">
     </div>
+
     <div>
         <button type="button" id="ingreButton" onclick="AddIngredient()">ADD AN INGREDIENT</button>
     </div>
@@ -31,8 +36,11 @@
         <br><br>
 
         <div class="instructions">
+
         Instructions: 
+
         <br>
+
         <textarea name="instructions" type="text"></textarea>
         </div>
 
@@ -41,15 +49,25 @@
         </div>
 
         <br><br>
+
         Protein: <input name="protein" type="number" style="width: 4em">
+
         <br><br>
+
         Fat: <input name="fat" type="number" style="width: 4em">
+
         <br><br>
+
         Carbs: <input name="carbs" type="number" style="width: 4em">
+
         <br><br>
+
         Calories: <input name="calories" type="number" style="width: 4em">
+
         <br><br>
-        <input type="submit" value="CREATE MEAL">
+
+        <input type="submit" value="CREATE MEAL" style="padding: 20px">
+        
     </form>
 
 <script type="text/javascript" src="/dynamic.js"></script>

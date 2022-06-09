@@ -6,7 +6,8 @@ const session = require('express-session');
 const passport = require('passport')
 const methodOverride = require('method-override')
 const mealPrepRoutes = require('./routes/recipeRoutes');
-const userRoutes = require('./routes/auth')
+const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/userRoutes')
 
 require('dotenv').config();
 require('./config/database.js')
@@ -34,6 +35,7 @@ app.use(passport.session());
 
 
 app.use('/', mealPrepRoutes)
+app.use('/', authRoutes)
 app.use('/', userRoutes)
 
 
