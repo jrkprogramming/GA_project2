@@ -11,36 +11,72 @@
     <h1>Edit <%= recipe.mealName %></h1>
 
     <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST">
+
         Meal Name: <input name="mealName" type="text" value="<%= recipe.mealName %>">
+
         <br><br>
+
         About: <textarea name="notes" type="text"><%= recipe.notes %></textarea>
+
         <br><br>
 
         Ingredients: 
+
+        <div class="ingredients">
         <% recipe.ingredients.map(function(meal, index){ %>
             <br>
             <input name="ingredients" type="text" value="<%= recipe.ingredients[index] %>">
         <% }) %> 
+        </div>
+
+        <br>
+
+        <div>
+            <button type="button" id="ingreButton" onclick="AddIngredient()">ADD AN INGREDIENT</button>
+        </div>
+
 
         <br><br>
 
         Instructions: 
+
+
+        <div class="instructions">
         <% recipe.instructions.map(function(meal, index){ %>
             <br>
             <textarea name="instructions" type="text"><%= recipe.instructions[index] %></textarea>
         <% }) %> 
+        </div>
+
+        <br>
+
+        <div>
+            <button type="button" id="instrucButton" onclick="AddInstruction()">ADD AN INSTRUCTION</button>
+        </div>
 
         <br><br>
+
         Protein: <input name="protein" type="number" value="<%= recipe.protein %>" style="width: 4em">
+
         <br><br>
+
         Fat: <input name="fat" type="number" value="<%= recipe.fat %>" style="width: 4em">
+
         <br><br>
+
         Carbs: <input name="carbs" type="number" value="<%= recipe.carbs %>" style="width: 4em">
+
         <br><br>
+
         Calories: <input name="calories" type="number" value="<%= recipe.calories %>" style="width: 4em">
+
         <br><br>
+
         <input type="submit" value="SAVE CHANGES">
+
     </form>
     
+    <script type="text/javascript" src="/dynamic.js"></script>
+
 </body>
 </html>
