@@ -21,7 +21,7 @@ const index = async (req, res) => {
 
 function showMeal(req, res) {
     Recipe.findById(req.params.id).populate('image').then((recipe) => {
-        // recipe = {...recipe._doc,image:recipe.image.toString('base64')}
+        recipe = {...recipe._doc,image:Buffer.from(recipe.image.data).toString('base64')}
         // console.log(recipe)
 
         // res.send(recipe.image)
