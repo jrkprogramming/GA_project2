@@ -4,35 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
+
+    <br>
+
+    <a class="btn btn-outline-primary" href="/mealPrep">Go Back</a>
+        
+    <br><br>
 
     <h1>Edit <%= recipe.mealName %></h1>
 
     <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST">
 
-        Meal Name: <input name="mealName" type="text" value="<%= recipe.mealName %>">
+
+        <input class="form-control form-control-lg" type="text" name="mealName" value="<%= recipe.mealName %>" aria-label=".form-control-lg example">
 
         <br><br>
 
-        About: <textarea name="notes" type="text"><%= recipe.notes %></textarea>
+        <div class="form-floating">
+            <label for="floatingTextarea">About:</label>
+            <textarea class="form-control" placeholder="Write a description of your meal here." id="floatingTextarea" style="height: 100px" name="notes"><%= recipe.notes %></textarea>
+        </div>
 
         <br><br>
 
         Ingredients: 
 
-        <div class="ingredients">
+        <div class="ingredients form-floating mb-3">
         <% recipe.ingredients.map(function(meal, index){ %>
-            <br>
-            <input name="ingredients" type="text" value="<%= recipe.ingredients[index] %>">
+
+                <input type="text" class="form-control" id="floatingInput" value="<%= recipe.ingredients[index] %>">
+            
         <% }) %> 
         </div>
 
         <br>
 
         <div>
-            <button type="button" id="ingreButton" onclick="AddIngredient()">ADD AN INGREDIENT</button>
+            <button type="button" id="ingreButton" onclick="AddIngredient()" class="btn btn-primary btn-sm">ADD AN INGREDIENT</button>
         </div>
 
 
@@ -41,38 +53,40 @@
         Instructions: 
 
 
-        <div class="instructions">
+        <div class="instructions form-floating">
         <% recipe.instructions.map(function(meal, index){ %>
             <br>
-            <textarea name="instructions" type="text"><%= recipe.instructions[index] %></textarea>
+
+                <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="instructions" type="text"><%= recipe.instructions[index] %></textarea>
+
         <% }) %> 
         </div>
 
         <br>
 
         <div>
-            <button type="button" id="instrucButton" onclick="AddInstruction()">ADD AN INSTRUCTION</button>
+            <button type="button" id="instrucButton" onclick="AddInstruction()" class="btn btn-primary btn-sm">ADD AN INSTRUCTION</button>
         </div>
 
         <br><br>
 
-        Protein: <input name="protein" type="number" value="<%= recipe.protein %>" style="width: 4em">
+        Protein: <input name="protein" type="number" value="<%= recipe.protein %>" style="width: 4em">g
 
         <br><br>
 
-        Fat: <input name="fat" type="number" value="<%= recipe.fat %>" style="width: 4em">
+        Fat: <input name="fat" type="number" value="<%= recipe.fat %>" style="width: 4em">g
 
         <br><br>
 
-        Carbs: <input name="carbs" type="number" value="<%= recipe.carbs %>" style="width: 4em">
+        Carbs: <input name="carbs" type="number" value="<%= recipe.carbs %>" style="width: 4em">g
 
         <br><br>
 
-        Calories: <input name="calories" type="number" value="<%= recipe.calories %>" style="width: 4em">
+        Calories: <input name="calories" type="number" value="<%= recipe.calories %>" style="width: 4em"> kcal
 
         <br><br>
 
-        <input type="submit" value="SAVE CHANGES" style="padding: 20px">
+        <input type="submit" value="SAVE CHANGES" class="btn btn-outline-primary" style="padding: 20px">
 
     </form>
     

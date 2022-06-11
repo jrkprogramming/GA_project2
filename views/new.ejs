@@ -9,9 +9,15 @@
     </head>
     <body>
         
+        <br>
 
+        <a class="btn btn-outline-primary" href="/mealPrep">Go Back</a>
             
+        <br><br>
+
+
 <h1>Add a Meal Prep</h1>
+
 
 <form action="/mealPrep" method="POST">
 
@@ -34,7 +40,7 @@
 
     <div class="form-floating">
         <label for="floatingTextarea">About:</label>
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px" name="notes"></textarea>
+        <textarea class="form-control" placeholder="Write a description of your meal here." id="floatingTextarea" style="height: 100px" name="notes"></textarea>
     </div>
 
 
@@ -45,7 +51,7 @@
         <!-- <input class="ingre" name="ingredients" type="text"> -->
         <div class="form-floating mb-3">
             <label for="floatingInput">Ingredients:</label>
-            <input type="text" class="form-control" id="floatingInput" placeholder="">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Add 1 ingredient. To add another, click the 'ADD ANOTHER INGREDIENT' button.">
           </div>
     </div>
 
@@ -69,7 +75,7 @@
         <!-- <textarea name="instructions" type="text"></textarea> -->
 
         <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="instructions" type="text"></textarea>
+            <textarea class="form-control" placeholder="Write the steps to your recipe. To add another step, click the 'ADD ANOTHER STEP' button." id="floatingTextarea2" style="height: 100px" name="instructions" type="text"></textarea>
             <!-- <label for="floatingTextarea2">Comments</label> -->
         </div>
 

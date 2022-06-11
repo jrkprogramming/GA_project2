@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
   router.get('/oauth2callback', passport.authenticate(
     'google',
     {
-        // users?
       successRedirect : '/mealPrep',
       failureRedirect : '/mealPrep'
     }
