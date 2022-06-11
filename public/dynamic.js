@@ -9,10 +9,10 @@ const AddIngredient = () => {
 
     ingredientInputList.appendChild(createIngredientField)
 
-    }
+}
 
 
-    const AddInstruction = () => {
+const AddInstruction = () => {
 
         let createInstructionField = document.createElement("textarea")
         createInstructionField.setAttribute("name", "instructions");
@@ -23,4 +23,4 @@ const AddIngredient = () => {
     
         instructionsInputList.appendChild(createInstructionField)
     
-    }
+}

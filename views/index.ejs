@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
 
-    <a href="/mealPrep/new">POST A NEW MEAL PREP</a>
+    <br>
 
-    <br>    <br>
-
-    <table id="list">
+    <table class="table table-striped">
         <thead>
           <tr>
             <th>Meal Name</th>
@@ -20,21 +19,24 @@
             <th>Fat</th>
             <th>Carbs</th>
             <th>Calories</th>
+            <th>Created By</th>
           </tr>
         </thead>
         <tbody>
           <% allMeals.forEach(function(mealPrep) { %>
             <tr>
               <td><a href="/mealPrep/<%= mealPrep._id %>"><%= mealPrep.mealName %></a></td>
-              <td><%= mealPrep.protein %></td>
-              <td><%= mealPrep.fat %></td>
-              <td><%= mealPrep.carbs %></td>
-              <td><%= mealPrep.calories %></td>
+              <td><%= mealPrep.protein %>g</td>
+              <td><%= mealPrep.fat %>g</td>
+              <td><%= mealPrep.carbs %>g</td>
+              <td><%= mealPrep.calories %> kcal</td>
+              <td><%=  %> </td>
             </tr>
             <% }); %>
           </tbody>
         </table>
 
+        <a class="btn btn-outline-primary" href="/mealPrep/new">POST A NEW MEAL PREP</a>
 
 </body>
 </html>

@@ -29,4 +29,4 @@ Recipe.deleteMany({})
 
 
 // sample data
-// https://gimmedelicious.com/20-minute-meal-prep-chicken-rice-and-broccoli/
+// https://gimmedelicious.com/20-minute-meal-prep-chicken-rice-and-broccoli/ 

@@ -36,7 +36,7 @@ async function editMeal(req, res) {
 async function deleteMeal(req, res) {
     await Recipe.findByIdAndDelete(req.params.id);
     res.redirect('/mealPrep');
-  }
+}
 
 module.exports = {
     index,

@@ -24,4 +24,4 @@ router.get('/', function(req, res) {
     res.redirect('/mealPrep');
   });
   
-  module.exports = router;
+  module.exports = router
