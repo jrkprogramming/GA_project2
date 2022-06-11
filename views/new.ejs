@@ -19,7 +19,7 @@
 <h1>Add a Meal Prep</h1>
 
 
-<form action="/mealPrep" method="POST">
+<form action="/mealPrep" method="POST" enctype="multipart/form-data">
 
     <!-- Meal Name: <input name="mealName" type="text"> -->
     <br><br>
@@ -29,7 +29,7 @@
 
     <div>
         <label for="formFileLg" class="form-label">Upload an Image of Your Meal</label>
-        <input class="form-control form-control-lg" id="formFileLg" type="file">
+        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
     </div>
 
     <br><br>
@@ -51,7 +51,7 @@
         <!-- <input class="ingre" name="ingredients" type="text"> -->
         <div class="form-floating mb-3">
             <label for="floatingInput">Ingredients:</label>
-            <input type="text" class="form-control" id="floatingInput" placeholder="Add 1 ingredient. To add another, click the 'ADD ANOTHER INGREDIENT' button.">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Add 1 ingredient. To add another, click the 'ADD ANOTHER INGREDIENT' button." name="ingredients">
           </div>
     </div>
 

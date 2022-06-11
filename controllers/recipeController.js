@@ -1,5 +1,18 @@
 
 const Recipe = require('../models/recipe')
+const Images = require('../models/images')
+const multer = require('multer');
+
+const Storage = multer.diskStorage({
+    destination:'./public/images',
+    fileName: (req,file,cb) => {
+        cb(null, file.originalname)
+    }
+})
+
+const upload = multer({
+    storage:Storage
+}).single('image')
 
 const index = async (req, res) => {
     let allMeals = await Recipe.find({})
@@ -7,7 +20,12 @@ const index = async (req, res) => {
 }
 
 function showMeal(req, res) {
-    Recipe.findById(req.params.id).then((recipe) => {
+    Recipe.findById(req.params.id).populate('image').then((recipe) => {
+        // recipe = {...recipe._doc,image:recipe.image.toString('base64')}
+        // console.log(recipe)
+
+        // res.send(recipe.image)
+
         res.render('showMeal', {recipe})
     })
 }
@@ -17,9 +35,41 @@ function newMeal(req, res) {
 }
 
 function createMeal(req, res) {
-    let newMeal = new Recipe(req.body)
-    newMeal.save(() => console.log('New meal was saved!'));
-    res.redirect('/mealPrep')
+    
+    upload(req, res, err => {
+
+        
+        let newMeal = new Recipe(req.body)
+        
+        console.log(req.file)
+
+        if (err) {
+            console.log(err)
+        } else {
+            const newImage = new Images({
+                name: req.body.name,
+                image: {
+                    data:req.file.filename,
+                    contentType:'image/png'
+                }
+            })
+            newImage.save().then(img => {
+                
+                newMeal.image = img._id
+                newMeal.save().then(() => {console.log('New meal was saved!')
+                res.redirect('/mealPrep')
+            })
+            
+            
+        });
+        
+        console.log(req.file)
+
+        }
+
+
+})
+    
 }
 
 function showEditMeal(req, res) {
@@ -37,6 +87,9 @@ async function deleteMeal(req, res) {
     await Recipe.findByIdAndDelete(req.params.id);
     res.redirect('/mealPrep');
 }
+
+
+
 
 module.exports = {
     index,

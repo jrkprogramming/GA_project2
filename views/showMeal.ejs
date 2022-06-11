@@ -16,7 +16,14 @@
     <br><br>
 
     <h1><%=  recipe.mealName  %></h1>
+
     <br>
+
+    <!-- <img src="/images/ca4be862836eb9ff091646f1cb21be66"> -->
+    <img src="data:image/png;base64,<%= recipe.image.data %>">
+
+    <br>
+
     <h2>About:</h2>
     <%=  recipe.notes  %>
 
