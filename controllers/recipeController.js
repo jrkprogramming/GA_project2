@@ -26,7 +26,7 @@ function showEditMeal(req, res) {
     Recipe.findById(req.params.id).then((recipe) => {
       res.render('edit', {recipe})
 })
-  }
+}
 
 async function editMeal(req, res) {
     await Recipe.findByIdAndUpdate(req.params.id, req.body);

@@ -4,51 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <a href="/mealPrep">Go Back</a>
+
+    <br>
+
+    <a class="btn btn-outline-primary" href="/mealPrep">Go Back</a>
+
+    <br><br>
+
     <h1><%=  recipe.mealName  %></h1>
+    <br>
     <h2>About:</h2>
     <%=  recipe.notes  %>
 
+    <br><br>
 
     <ul>
         <h2>Ingredients:</h2>
         <% recipe.ingredients.forEach(function(item,index){ %>
-            <li> <%= item %> </li>
+            <li class="col-sm"> <%= item %> </li>
         <% }) %>
     </ul>
 
 
+    <br>
 
+
+<div class="row">    
     <ol>
         <h2>Instructions:</h2>
         <% recipe.instructions.forEach(function(item,index){ %>
-            <li> <%= item %> </li>
+            <li class="col-sm"> <%= item %> </li>
         <% }) %>
     </ol>
-
+</div>
 
     <br>
-    <h2>Nutrition Facts:</h2>
-    <h4>Protein: <%=  recipe.protein  %>g</h4>
-    <h4>Fat: <%=  recipe.fat  %>g</h4>
-    <h4>Carbs: <%=  recipe.carbs  %>g</h4>
-    <h4>Total Calories: <%=  recipe.calories  %> kcal</h4>
+    <hr>
 
-    <br><br><br><br>
+    <div class="jumbotron">
+    <h2>Nutrition Facts:</h2>
+    <br>
+    <p>Protein: <%=  recipe.protein  %>g</p>
+    <p>Fat: <%=  recipe.fat  %>g</p>
+    <p>Carbs: <%=  recipe.carbs  %>g</p>
+    <p>Total Calories: <%=  recipe.calories  %> kcal</p>
+    </div>
+        
 
     <form action="/mealPrep/<%= recipe._id %>/edit">
-        <input type="submit" value="EDIT MEAL" />
+        <input class="btn btn-outline-primary" type="submit" value="EDIT MEAL" />
     </form>
 
     <br>
 
     <form method="POST" action="/mealPrep/<%= recipe._id %>?_method=DELETE">
-        <input type="submit" value="DELETE MEAL">
+        <input class="btn btn-outline-primary" type="submit" value="DELETE MEAL">
     </form>
 
+    <br>
 
 </body>
 </html>

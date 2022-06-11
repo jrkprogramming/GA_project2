@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <title>Document</title>
     </head>
     <body>
@@ -14,23 +15,47 @@
 
 <form action="/mealPrep" method="POST">
 
-    Meal Name: <input name="mealName" type="text">
+    <!-- Meal Name: <input name="mealName" type="text"> -->
+    <br><br>
+    <input class="form-control form-control-lg" type="text" name="mealName" placeholder="Meal Name" aria-label=".form-control-lg example">
 
     <br><br>
 
-    About: <textarea name="notes" type="text"></textarea>
+    <div>
+        <label for="formFileLg" class="form-label">Upload an Image of Your Meal</label>
+        <input class="form-control form-control-lg" id="formFileLg" type="file">
+    </div>
+
+    <br><br>
+
+    <!-- <textarea name="notes" type="text"></textarea> -->
+
+
+
+    <div class="form-floating">
+        <label for="floatingTextarea">About:</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 100px" name="notes"></textarea>
+    </div>
+
 
     <br><br>
     
     <div class="ingredients">
-        Ingredients: 
         <br>
-        <input class="ingre" name="ingredients" type="text">
+        <!-- <input class="ingre" name="ingredients" type="text"> -->
+        <div class="form-floating mb-3">
+            <label for="floatingInput">Ingredients:</label>
+            <input type="text" class="form-control" id="floatingInput" placeholder="">
+          </div>
     </div>
 
+
+
+
     <div>
-        <button type="button" id="ingreButton" onclick="AddIngredient()">ADD AN INGREDIENT</button>
+        <button type="button" id="ingreButton" onclick="AddIngredient()" class="btn btn-primary btn-sm">ADD ANOTHER INGREDIENT</button>
     </div>
+
     
 
         <br><br>
@@ -41,32 +66,40 @@
 
         <br>
 
-        <textarea name="instructions" type="text"></textarea>
+        <!-- <textarea name="instructions" type="text"></textarea> -->
+
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="instructions" type="text"></textarea>
+            <!-- <label for="floatingTextarea2">Comments</label> -->
         </div>
+
+    </div>
+
+        <br>
 
         <div>
-            <button type="button" id="instrucButton" onclick="AddInstruction()">ADD AN INSTRUCTION</button>
+            <button type="button" id="instrucButton" onclick="AddInstruction()" class="btn btn-primary btn-sm">ADD ANOTHER STEP</button>
         </div>
 
         <br><br>
 
-        Protein: <input name="protein" type="number" style="width: 4em">
+        Protein: <input name="protein" type="number" style="width: 4em">g
 
         <br><br>
 
-        Fat: <input name="fat" type="number" style="width: 4em">
+        Fat: <input name="fat" type="number" style="width: 4em">g
 
         <br><br>
 
-        Carbs: <input name="carbs" type="number" style="width: 4em">
+        Carbs: <input name="carbs" type="number" style="width: 4em">g
 
         <br><br>
 
-        Calories: <input name="calories" type="number" style="width: 4em">
+        Calories: <input name="calories" type="number" style="width: 4em"> kcal
 
         <br><br>
 
-        <input type="submit" value="CREATE MEAL" style="padding: 20px">
+        <input class="btn btn-outline-primary" type="submit" value="CREATE MEAL" style="padding: 20px">
         
     </form>
 
