@@ -1,7 +1,8 @@
 
 const Recipe = require('../models/recipe')
-const Images = require('../models/images')
+// const Images = require('../models/images')
 const multer = require('multer');
+var path = require('path');
 
 const Storage = multer.diskStorage({
     destination:'./public/images',
@@ -11,8 +12,25 @@ const Storage = multer.diskStorage({
 })
 
 const upload = multer({
-    storage:Storage
-}).single('image')
+    storage:Storage,
+    limits: {fileSize: 1000000000000},
+    fileFilter: function(req, file, cb) {
+        checkFileType(file, cb)
+    }
+    }).single('image')
+
+function checkFileType(file, cb) {
+    const fileTypes = /jpeg|jpg|png|gif/
+    const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
+    const mimeType = fileTypes.test(file.mimetype)
+
+    if(mimeType && extName) {
+        return cb(null, true)
+    } else {
+        cb('Error: Images only')
+    }
+}
+
 
 const index = async (req, res) => {
     let allMeals = await Recipe.find({})
@@ -20,8 +38,8 @@ const index = async (req, res) => {
 }
 
 function showMeal(req, res) {
-    Recipe.findById(req.params.id).populate('image').then((recipe) => {
-        recipe = {...recipe._doc,image:Buffer.from(recipe.image.data).toString('base64')}
+    Recipe.findById(req.params.id).then((recipe) => {
+        // recipe = {...recipe._doc,image:Buffer.from(recipe.image.data).toString('base64')}
         // console.log(recipe)
 
         // res.send(recipe.image)
@@ -34,48 +52,53 @@ function newMeal(req, res) {
     res.render('new')
 }
 
+
 function createMeal(req, res) {
     
-    upload(req, res, err => {
-
-        
-        let newMeal = new Recipe(req.body)
-        
-        console.log(req.file)
+    upload(req, res, (err) => {
 
         if (err) {
             console.log(err)
         } else {
-            const newImage = new Images({
-                name: req.body.name,
-                image: {
-                    data:req.file.filename,
-                    contentType:'image/png'
-                }
-            })
-            newImage.save().then(img => {
-                
-                newMeal.image = img._id
-                newMeal.save().then(() => {console.log('New meal was saved!')
-                res.redirect('/mealPrep')
-            })
-            
-            
-        });
-        
-        console.log(req.file)
 
+            if(req.file == undefined) {
+                res.send('Please select a file')
+            }
+            
+        } try {
+            
+            const newMeal = new Recipe({
+
+                mealName: req.body.mealName,
+                image: req.file.filename,
+                notes: req.body.notes,
+                ingredients: req.body.ingredients,
+                instructions: req.body.instructions,
+                protein: req.body.protein,
+                fat: req.body.fat,
+                carbs: req.body.carbs,
+                calories: req.body.calories
+
+            })
+        
+            newMeal.save(() => res.redirect('/mealPrep'), {title: "Meal Prep App"})
+
+
+        // newMeal.image = img._id
+        // newMeal.save().then(() => {console.log('New meal was saved!')
+        // res.redirect('/mealPrep')
+        
+        } catch (err) {
+        console.log(err)
         }
 
-
-})
-    
+    })
 }
 
 function showEditMeal(req, res) {
     Recipe.findById(req.params.id).then((recipe) => {
       res.render('edit', {recipe})
-})
+    })
 }
 
 async function editMeal(req, res) {

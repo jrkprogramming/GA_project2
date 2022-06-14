@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const mealPrepRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/userRoutes')
+const bodyParser = require('body-parser')
 
 // Multer
 // const multer = require('multer');
@@ -27,6 +28,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({ 
+  extended: true 
+}));
 
 app.use(session({
   secret: 'SEIRocks!',
