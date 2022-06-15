@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="css" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -59,7 +60,12 @@
     <p>Carbs: <%=  recipe.carbs  %>g</p>
     <p>Total Calories: <%=  recipe.calories  %> kcal</p>
     </div>
-        
+
+    <br>
+
+    <h6>Created By: <%= user.name %></h6>
+
+    <br><br>
 
     <form action="/mealPrep/<%= recipe._id %>/edit">
         <input class="btn btn-outline-primary" type="submit" value="EDIT MEAL" />

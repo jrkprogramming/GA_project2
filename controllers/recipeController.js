@@ -1,8 +1,8 @@
 
 const Recipe = require('../models/recipe')
-// const Images = require('../models/images')
+const User = require('../models/user')
 const multer = require('multer');
-var path = require('path');
+const path = require('path');
 
 const Storage = multer.diskStorage({
     destination:'./public/images',
@@ -11,7 +11,7 @@ const Storage = multer.diskStorage({
     }
 })
 
-const upload = multer({
+const upload = multer ({
     storage:Storage,
     limits: {fileSize: 1000000000000},
     fileFilter: function(req, file, cb) {
@@ -24,27 +24,28 @@ function checkFileType(file, cb) {
     const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
     const mimeType = fileTypes.test(file.mimetype)
 
-    if(mimeType && extName) {
+    if (mimeType && extName) {
         return cb(null, true)
     } else {
         cb('Error: Images only')
     }
+
 }
 
-
 const index = async (req, res) => {
-    let allMeals = await Recipe.find({})
-    res.render('index', {allMeals})
+    
+    if (req.user) {
+        let allMeals = await Recipe.find({})
+        res.render('index', {allMeals})
+    } else {
+        // Render error page
+        res.send('You need to be logged in')
+    }
 }
 
 function showMeal(req, res) {
     Recipe.findById(req.params.id).then((recipe) => {
-        // recipe = {...recipe._doc,image:Buffer.from(recipe.image.data).toString('base64')}
-        // console.log(recipe)
-
-        // res.send(recipe.image)
-
-        res.render('showMeal', {recipe})
+        res.render('showMeal', {recipe, user:recipe.owner})
     })
 }
 
@@ -52,21 +53,27 @@ function newMeal(req, res) {
     res.render('new')
 }
 
-
 function createMeal(req, res) {
+
+    // let findUser = await User.findById(req.user)
+
+    // console.log(findUser)
     
     upload(req, res, (err) => {
 
         if (err) {
+
             console.log(err)
+
         } else {
 
             if(req.file == undefined) {
                 res.send('Please select a file')
             }
-            
+
         } try {
             
+
             const newMeal = new Recipe({
 
                 mealName: req.body.mealName,
@@ -77,19 +84,17 @@ function createMeal(req, res) {
                 protein: req.body.protein,
                 fat: req.body.fat,
                 carbs: req.body.carbs,
-                calories: req.body.calories
+                calories: req.body.calories,
+                owner: req.user
 
             })
         
             newMeal.save(() => res.redirect('/mealPrep'), {title: "Meal Prep App"})
-
-
-        // newMeal.image = img._id
-        // newMeal.save().then(() => {console.log('New meal was saved!')
-        // res.redirect('/mealPrep')
         
         } catch (err) {
+
         console.log(err)
+
         }
 
     })
@@ -113,6 +118,28 @@ async function deleteMeal(req, res) {
 
 
 
+// --------------------------------
+
+function addComment(req, res, next) {
+    req.user.comment.push(req.body);
+    req.user.save(function(err) {
+      res.redirect('/mealPrep');
+    });
+  }
+
+//   function deleteComment(req, res, next) {
+//     Student.findOne({'facts._id': req.params.id}, function(err, student) {
+//       student.facts.id(req.params.id).remove();
+//       student.save(function(err) {
+//         res.redirect('/students');
+//       });
+//     });
+//   }
+
+function isLoggedIn(req, res, next) {
+  if ( req.isAuthenticated() ) return next();
+  res.redirect('/auth/google');
+}
 
 module.exports = {
     index,
@@ -121,5 +148,6 @@ module.exports = {
     createMeal,
     showEditMeal,
     editMeal,
-    deleteMeal
+    deleteMeal,
+    isLoggedIn
 }

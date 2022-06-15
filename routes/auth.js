@@ -1,4 +1,4 @@
-var router = require('express').Router();
+const router = require('express').Router();
 const passport = require('passport');
 
 router.get('/', function(req, res) {
@@ -19,8 +19,9 @@ router.get('/', function(req, res) {
   ));
   
   router.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/mealPrep');
+    req.logout(()=> {
+      res.redirect('/user/login');
+    });
   });
   
   module.exports = router

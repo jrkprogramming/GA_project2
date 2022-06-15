@@ -11,7 +11,7 @@
 
     <br>
 
-    <a class="btn btn-outline-primary" href="/user/login">SIGN OUT</a>
+    <a class="btn btn-outline-primary" href="/logout">SIGN OUT</a>
 
     <br><br>
 
@@ -38,7 +38,7 @@
               <td><%= mealPrep.fat %>g</td>
               <td><%= mealPrep.carbs %>g</td>
               <td><%= mealPrep.calories %> kcal</td>
-              <td><%=  %> </td>
+              <td><%= mealPrep.owner %> </td>
             </tr>
             <% }); %>
           </tbody>
