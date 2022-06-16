@@ -10,7 +10,6 @@ function userProfile(req, res) {
     })
 }
 
-
 module.exports = {
     showLogin,
     userProfile

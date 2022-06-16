@@ -35,17 +35,19 @@ function checkFileType(file, cb) {
 const index = async (req, res) => {
     
     if (req.user) {
-        let allMeals = await Recipe.find({})
+        let allMeals = await Recipe.find({}).populate('owner')
+        console.log(allMeals[0])
         res.render('index', {allMeals})
     } else {
         // Render error page
-        res.send('You need to be logged in')
+        res.redirect('/user/login')
     }
 }
 
 function showMeal(req, res) {
-    Recipe.findById(req.params.id).then((recipe) => {
-        res.render('showMeal', {recipe, user:recipe.owner})
+    Recipe.findById(req.params.id).populate('owner').then((recipe) => {
+        console.log(recipe.owner)
+        res.render('showMeal', {recipe})
     })
 }
 
@@ -54,10 +56,6 @@ function newMeal(req, res) {
 }
 
 function createMeal(req, res) {
-
-    // let findUser = await User.findById(req.user)
-
-    // console.log(findUser)
     
     upload(req, res, (err) => {
 
@@ -85,7 +83,7 @@ function createMeal(req, res) {
                 fat: req.body.fat,
                 carbs: req.body.carbs,
                 calories: req.body.calories,
-                owner: req.user
+                owner: req.user._id
 
             })
         
