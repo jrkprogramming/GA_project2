@@ -32,7 +32,22 @@
     <ul>
         <h2>Ingredients:</h2>
         <% recipe.ingredients.forEach(function(item,index){ %>
-            <li class="col-sm"> <%= item %> </li>
+            
+            <% if (item == '') { %> 
+
+                <script>
+
+                    recipe.classList.add('invisible')
+
+                </script>
+            
+                
+            <% } else { %>
+                    
+                <li class="col-sm"> <%= item %> </li>
+
+            <% } %> 
+
         <% }) %>
     </ul>
 
@@ -44,7 +59,24 @@
     <ol>
         <h2>Instructions:</h2>
         <% recipe.instructions.forEach(function(item,index){ %>
-            <li class="col-sm"> <%= item %> </li>
+
+
+            <% if (item == '') { %> 
+
+                <script>
+
+                    recipe.classList.add('invisible')
+
+                </script>
+            
+                
+            <% } else { %>
+                    
+                <li class="col-sm"> <%= item %> </li>
+
+            <% } %> 
+
+
         <% }) %>
     </ol>
 </div>

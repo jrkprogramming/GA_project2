@@ -36,8 +36,7 @@ const index = async (req, res) => {
     
     if (req.user) {
         let allMeals = await Recipe.find({}).populate('owner')
-        console.log(allMeals[0])
-        res.render('index', {allMeals})
+        res.render('index', {allMeals, user:req.user})
     } else {
         // Render error page
         res.redirect('/user/login')
@@ -46,7 +45,6 @@ const index = async (req, res) => {
 
 function showMeal(req, res) {
     Recipe.findById(req.params.id).populate('owner').then((recipe) => {
-        console.log(recipe.owner)
         res.render('showMeal', {recipe})
     })
 }
@@ -70,7 +68,6 @@ function createMeal(req, res) {
             }
 
         } try {
-            
 
             const newMeal = new Recipe({
 
@@ -86,13 +83,9 @@ function createMeal(req, res) {
                 owner: req.user._id
 
             })
-        
             newMeal.save(() => res.redirect('/mealPrep'), {title: "Meal Prep App"})
-        
         } catch (err) {
-
         console.log(err)
-
         }
 
     })
@@ -105,6 +98,7 @@ function showEditMeal(req, res) {
 }
 
 async function editMeal(req, res) {
+    console.log(req.body)
     await Recipe.findByIdAndUpdate(req.params.id, req.body);
     res.redirect(`/mealPrep`)
 }
@@ -147,5 +141,6 @@ module.exports = {
     showEditMeal,
     editMeal,
     deleteMeal,
+    addComment,
     isLoggedIn
 }

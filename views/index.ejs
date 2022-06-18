@@ -8,12 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-
     <br>
 
     <a class="btn btn-outline-primary" href="/logout">SIGN OUT</a>
 
-    <br><br>
+    <h3 class="text-right">
+      Signed In As:
+      <small class="text-muted"><%= user.name %></small>
+    </h3>
+
+    <br><br><br><br>
 
     <h1 style="text-align: center">WELCOME TO MEAL PREP APP BY JRK</h1>
 
@@ -46,7 +50,9 @@
 
         <br>
 
-        <a class="btn btn-outline-primary" href="/mealPrep/new">POST A NEW MEAL PREP</a>
+        <a class="btn btn-outline-primary col text-center" href="/mealPrep/new">POST A NEW MEAL PREP</a>
+
+
 
 </body>
 </html>

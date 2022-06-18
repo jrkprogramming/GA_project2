@@ -24,6 +24,13 @@
 
         <br><br>
 
+        <!-- <div>
+            <label for="formFileLg" class="form-label">Upload an Image of Your Meal </label>
+            <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+        </div>
+
+        <br><br> -->
+
         <div class="form-floating">
             <label for="floatingTextarea">About:</label>
             <textarea class="form-control" placeholder="Write a description of your meal here." id="floatingTextarea" style="height: 100px" name="notes"><%= recipe.notes %></textarea>
@@ -36,7 +43,7 @@
         <div class="ingredients form-floating mb-3">
         <% recipe.ingredients.map(function(meal, index){ %>
 
-                <input type="text" class="form-control" id="floatingInput" value="<%= recipe.ingredients[index] %>">
+                <input type="text" class="form-control" id="floatingInput" name="ingredients" value="<%= recipe.ingredients[index] %>">
             
         <% }) %> 
         </div>
