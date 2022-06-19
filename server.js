@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 // const PORT = 9000
+const normalizePort = require('normalize-port')
 const PORT = normalizePort(process.env.PORT || 9000);
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -10,7 +11,6 @@ const mealPrepRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
-const normalizePort = require('normalize-port')
 const http = require('http');
 
 require('dotenv').config();
