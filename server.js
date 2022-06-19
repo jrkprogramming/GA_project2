@@ -50,6 +50,6 @@ app.use('/', userRoutes)
 //     console.log('ITS OVER', PORT)
 // })
 
-const server = http.createServer(listenerOrApp).listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
 })
