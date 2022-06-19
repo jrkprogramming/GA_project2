@@ -37,15 +37,14 @@ Stretch Goals:
 - Users should be able to edit their names
 - Users should be able to edit their meal pictures
 - User should be able to sign in through log in page.
-- Users 
 
 
 Major Hurdles:
 - Had a lot of trouble getting Multer to work.
-- 
+- Users should not be able to edit other people's meal preps.
 
 
 
-Wireframe:
+Initial Wireframe:
 
 ![alt text](pics/wireframe.png)
