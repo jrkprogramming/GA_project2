@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 // const PORT = 9000
-var PORT = 9000;
+const PORT = process.env.PORT || 8080;
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport')
