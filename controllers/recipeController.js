@@ -69,7 +69,7 @@ function createMeal(req, res) {
 
         } 
         
-        try {
+        try { 
 
             const newMeal = new Recipe({
 
@@ -86,8 +86,11 @@ function createMeal(req, res) {
 
             })
             newMeal.save(() => res.redirect('/mealPrep'), {title: "Meal Prep App"})
+            
         } catch (err) {
+
         console.log(err)
+
         }
 
     })
