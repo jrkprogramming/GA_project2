@@ -1,15 +1,15 @@
 # Meal Prep App
 
 
-    Project Description:
+Project Description:
 This is an application that will allow users to log in and post their favorite meal preps. The recipes will have instructions and a list of ingredients to prepare the meals.
 
 
-    Technologies Used:
+Technologies Used:
 JavaScript, CSS (Bootstrap), EJS, MongoDB Atlas / Mongoose, Postman, Multer, OAuth
 
 
-    User Stories:
+User Stories:
 As a user, I want to be able to create my own profile.
 As a user, I want to be able to upload my meal prep recipes.
 As a user, I want to be able to add images to the recipes I upload.
@@ -17,11 +17,11 @@ As a user, I want to be able to choose through the list of meals to view.
 As a user, I want to be able to add notes to the recipes (to clarify ingredients and special instructions for cooking.)
 
 
-    Screenshots:
+Screenshots:
 
 
 
-    MVP:
+MVP:
 - Users can post recipes to the page. 
 - Users can log in.
 - Display recipes on the page for user.
@@ -29,7 +29,7 @@ As a user, I want to be able to add notes to the recipes (to clarify ingredients
 - Use EJS to render profile pages and index pages for recipes.
 
 
-	Stretch Goals:
+Stretch Goals:
 - Use Third Party API to load in premade recipes for users that are looking for more.
 - Add profiles pages where people can see what meals they have posted.
 - Allow users to comment and rate other recipes.
@@ -40,7 +40,7 @@ As a user, I want to be able to add notes to the recipes (to clarify ingredients
 - Users 
 
 
-    Major Hurdles:
+Major Hurdles:
 - Had a lot of trouble getting Multer to work.
 - 
 
