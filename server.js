@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 // const PORT = 9000
-const PORT = process.env.PORT || 8080;
+const PORT = normalizePort(process.env.PORT || 9000);
 var cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport')
@@ -10,6 +10,8 @@ const mealPrepRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
+const normalizePort = require('normalize-port')
+const http = require('http');
 
 require('dotenv').config();
 require('./config/database.js')
@@ -44,6 +46,10 @@ app.use('/', authRoutes)
 app.use('/', userRoutes)
 
 
-app.listen(PORT, function() {
-    console.log('ITS OVER', PORT)
+// app.listen(PORT, function() {
+//     console.log('ITS OVER', PORT)
+// })
+
+const server = http.createServer(listenerOrApp).listen(PORT, () => {
+  console.log(`listening on ${PORT}`)
 })
