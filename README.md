@@ -31,12 +31,17 @@ Use EJS to render profile pages and index pages for recipes.
 
 
 	Stretch Goals:
-Use Third Party API to fetch nutrition facts for the food that the user inputs.
-Use a CSS Framework (Bootstrap).
+Use Third Party API to load in premade recipes for users that are looking for more.
+Add profiles pages where people can see what meals they have posted.
 Allow users to comment and rate other recipes.
+Images should be deleted when the meal prep is deleted
+Users should be able to edit their names
+Users should be able to edit their meal pictures
+User should be able to sign in through log in page.
 
 
     Major Hurdles:
+
 
 
 

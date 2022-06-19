@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <body>
+
+  <div class="mx-5">
+
     <br>
 
     <a class="btn btn-outline-primary" href="/logout">SIGN OUT</a>
@@ -23,7 +26,7 @@
     <h1 style="text-align: center">WELCOME TO MEAL PREP APP BY JRK</h1>
 
     <br><br>
-
+    
     <table class="table table-striped" id="sortable">
         <thead>
           <tr>
@@ -51,14 +54,14 @@
 
         <br>
 
+
         <a class="btn btn-outline-primary col text-center" href="/mealPrep/new">POST A NEW MEAL PREP</a>
 
+  </div>
 
+<script>
 
-        
-        <script>
-
-          cPrev = -1; // global var saves the previous c, used to
+cPrev = -1; // global var saves the previous c, used to
             // determine if the same column is clicked again
 
 function sortBy(c) {
@@ -100,7 +103,8 @@ function sortBy(c) {
         }
     }
 }
-        </script>
+
+</script>
 
 </body>
 </html>

@@ -64,10 +64,12 @@ function createMeal(req, res) {
         } else {
 
             if(req.file == undefined) {
-                res.send('Please select a file')
+                res.send("Please include a photo of your meal!")
             }
 
-        } try {
+        } 
+        
+        try {
 
             const newMeal = new Recipe({
 
