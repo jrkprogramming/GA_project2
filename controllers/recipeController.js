@@ -64,7 +64,7 @@ function createMeal(req, res) {
         } else {
 
             if(req.file == undefined) {
-                res.send("Please include a photo of your meal!")
+                req.file.filename == null
             }
 
         } 
@@ -110,6 +110,9 @@ async function editMeal(req, res) {
 async function deleteMeal(req, res) {
     await Recipe.findByIdAndDelete(req.params.id);
     res.redirect('/mealPrep');
+
+    // User.findById(req.user._id)
+    // User.
 }
 
 
