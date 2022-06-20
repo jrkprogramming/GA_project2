@@ -64,7 +64,7 @@ function createMeal(req, res) {
         } else {
 
             if(req.file == undefined) {
-                req.file.filename == null
+                res.send('Please include a photo!')
             }
 
         } 
