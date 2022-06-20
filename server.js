@@ -11,7 +11,6 @@ const mealPrepRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
-const http = require('http');
 
 require('dotenv').config();
 require('./config/database.js')
