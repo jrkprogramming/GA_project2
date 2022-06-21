@@ -6,6 +6,7 @@ const path = require('path');
 const Storage = multer.diskStorage({
     destination:'./public/images',
     fileName: (req,file,cb) => {
+        // cb(null, new Date().toISOString() + '-' + file.originalname)
         cb(null, file.originalname)
     }
 })
@@ -147,6 +148,9 @@ module.exports = {
     showEditMeal,
     editMeal,
     deleteMeal,
-    addComment,
-    isLoggedIn
+    // addComment,
+    // isLoggedIn
+    upload,
+    Storage,
+    checkFileType
 }
