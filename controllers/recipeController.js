@@ -1,6 +1,5 @@
 
 const Recipe = require('../models/recipe')
-const User = require('../models/user')
 const multer = require('multer');
 const path = require('path');
 
@@ -119,12 +118,12 @@ async function deleteMeal(req, res) {
 
 // --------------------------------
 
-function addComment(req, res, next) {
-    req.user.comment.push(req.body);
-    req.user.save(function(err) {
-      res.redirect('/mealPrep');
-    });
-  }
+// function addComment(req, res, next) {
+//     req.user.comment.push(req.body);
+//     req.user.save(function(err) {
+//       res.redirect('/mealPrep');
+//     });
+//   }
 
 //   function deleteComment(req, res, next) {
 //     Student.findOne({'facts._id': req.params.id}, function(err, student) {
@@ -135,10 +134,10 @@ function addComment(req, res, next) {
 //     });
 //   }
 
-function isLoggedIn(req, res, next) {
-  if ( req.isAuthenticated() ) return next();
-  res.redirect('/auth/google');
-}
+// function isLoggedIn(req, res, next) {
+//   if ( req.isAuthenticated() ) return next();
+//   res.redirect('/auth/google');
+// }
 
 module.exports = {
     index,

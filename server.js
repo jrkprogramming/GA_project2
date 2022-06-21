@@ -11,10 +11,14 @@ const mealPrepRoutes = require('./routes/recipeRoutes');
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/userRoutes')
 const bodyParser = require('body-parser')
+const http = require('http')
+const cloudinary = require('cloudinary')
 
 require('dotenv').config();
 require('./config/database.js')
 require('./config/passport');
+
+
 
 var app = express();
 
@@ -27,8 +31,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ 
-  extended: true 
+  extended: false 
 }));
+app.use(bodyParser.json())
+
+
+
 
 app.use(session({
   secret: 'SEIRocks!',
