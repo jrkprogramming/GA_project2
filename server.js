@@ -39,32 +39,32 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 
-app.use('/mealPrep/new', async (req, res) => {
+// app.use('/mealPrep/new', async (req, res) => {
 
-  const uploader = async (path) => await cloudinary.UploadStream(path, 'Images');
+//   const uploader = async (path) => await cloudinary.UploadStream(path, 'Images');
 
-  if (req.method === "POST") {
-    const urls = [];
-    const files = req.files;
-    for (const file of files) {
-      const {path} = file;
-      const newPath = await uploader(path);
-      urls.push(newPath);
-      fs.unlinkSync(path)
-    }
+//   if (req.method === "POST") {
+//     const urls = [];
+//     const files = req.files;
+//     for (const file of files) {
+//       const {path} = file;
+//       const newPath = await uploader(path);
+//       urls.push(newPath);
+//       fs.unlinkSync(path)
+//     }
 
-    res.status(200).json({
-      message: 'images uploaded successfully',
-      data: urls
-    })
+//     res.status(200).json({
+//       message: 'images uploaded successfully',
+//       data: urls
+//     })
 
-  } else {
-    res.status(405).json({
-      err: `${req.method} method not allowed`
+//   } else {
+//     res.status(405).json({
+//       err: `${req.method} method not allowed`
 
-    })
-  }
-})
+//     })
+//   }
+// })
 
 // https://andela.com/insights/how-to-use-cloudinary-and-nodejs-to-upload-multiple-images/
 
