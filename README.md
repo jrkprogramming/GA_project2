@@ -37,6 +37,7 @@ Stretch Goals:
 - Users should be able to edit their names
 - Users should be able to edit their meal pictures
 - User should be able to sign in through log in page.
+- Add bcrypt (to encrypt passwords in database)
 
 
 Major Hurdles:
