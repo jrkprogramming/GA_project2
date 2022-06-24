@@ -18,19 +18,19 @@
 
     <h1>Edit <%= recipe.mealName %></h1>
 
-    <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST">
+    <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
 
         <input class="form-control form-control-lg" type="text" name="mealName" value="<%= recipe.mealName %>" aria-label=".form-control-lg example">
 
         <br><br>
 
-        <!-- <div>
-            <label for="formFileLg" class="form-label">Upload an Image of Your Meal </label>
+        <div>
+            <label for="formFileLg" class="form-label">Please include a photo of your meal prep!</label>
             <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
         </div>
 
-        <br><br> -->
+        <br><br>
 
         <div class="form-floating">
             <label for="floatingTextarea">About:</label>

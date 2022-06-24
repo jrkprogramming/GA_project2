@@ -5,60 +5,6 @@ const path = require('path');
 const cloudinary = require('../config/cloudinary')
 const upload = require('../config/multer');
 
-// const Storage = multer.diskStorage({
-//     destination:'./public/images',
-//     fileName: (req,file,cb) => {
-//         // cb(null, new Date().toISOString() + '-' + file.originalname)
-//         cb(null, file.originalname)
-//     }
-// })
-
-// const upload = multer ({
-//     storage:Storage,
-//     limits: {fileSize: 1000000000000},
-//     fileFilter: function(req, file, cb) {
-//         checkFileType(file, cb)
-//     }
-//     }).single('image')
-
-// function checkFileType(file, cb) {
-//     const fileTypes = /jpeg|jpg|png|gif/
-//     const extName = fileTypes.test(path.extname(file.originalname).toLowerCase())
-//     const mimeType = fileTypes.test(file.mimetype)
-
-//     if (mimeType && extName) {
-//         return cb(null, true)
-//     } else {
-//         cb('Error: Images only')
-//     }
-
-// }
-
-// const uploader = async (path) => await cloudinary.uploads(path, 'Images');
-
-// const newPath = uploader(path);
-
-// if (req.method === "POST") {
-//   const urls = [];
-//   const files = req.files;
-//   for (const file of files) {
-//     const {path} = file;
-    // urls.push(newPath);
-    // fs.unlinkSync(path)
-//   }
-
-//   res.status(200).json({
-//     message: 'images uploaded successfully',
-//     data: urls
-//   })
-
-// } else {
-//   res.status(405).json({
-//     err: `${req.method} method not allowed`
-
-//   })
-// }
-
 const index = async (req, res) => {
     
     if (req.user) {
@@ -81,22 +27,6 @@ function newMeal(req, res) {
 }
 
 async function createMeal(req, res) {
-
-    
-    // upload.single(req, res, async (err) => {
-        
-        
-        // if (err) {
-            
-        //     console.log(err)
-            
-        // } else {
-            
-        //     if(req.file == undefined) {
-        //         res.send('Please include a photo!')
-        //     }
-            
-        // } 
         
         try { 
             
@@ -126,7 +56,6 @@ async function createMeal(req, res) {
 
         }
 
-    // })
 }
 
 function showEditMeal(req, res) {
@@ -136,9 +65,32 @@ function showEditMeal(req, res) {
 }
 
 async function editMeal(req, res) {
-    console.log(req.body)
-    await Recipe.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect(`/mealPrep`)
+
+    try {
+        let mealPrep = await Recipe.findById(req.params.id);
+
+        await cloudinary.uploader.destroy(mealPrep.cloudinary_id)
+
+        const result = await cloudinary.uploader.upload(req.file.path)
+        
+        const data = {
+            mealName: req.body.mealName || mealPrep.mealName,
+            image: result.secure_url || mealPrep.image,
+            cloudinary_id: result.public_id || mealPrep.cloudinary_id,
+            notes: req.body.notes || mealPrep.notes,
+            ingredients: req.body.ingredients || mealPrep.ingredients,
+            instructions: req.body.instructions || mealPrep.instructions,
+            protein: req.body.protein || mealPrep.protein,
+            fat: req.body.fat || mealPrep.fat,
+            carbs: req.body.carbs || mealPrep.carbs,
+            calories: req.body.calories || mealPrep.calories,
+            owner: req.user._id || mealPrep.owner
+        }
+        mealPrep = await Recipe.findByIdAndUpdate(req.params.id, data, {new:true})
+        res.json(mealPrep)
+    }catch (err) {
+        console.log(err)
+    }
 }
 
 async function deleteMeal(req, res) {
@@ -153,9 +105,6 @@ async function deleteMeal(req, res) {
         console.log(err)
     }
 }
-
-
-
 
 
 
@@ -192,7 +141,4 @@ module.exports = {
     deleteMeal
     // addComment,
     // isLoggedIn
-    // upload,
-    // Storage,
-    // checkFileType
 }

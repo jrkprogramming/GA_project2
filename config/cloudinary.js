@@ -1,8 +1,4 @@
 const cloudinary = require('cloudinary').v2
-// const dotenv = require('dotenv')
-
-// dotenv.config();
-
 require('dotenv').config();
 
 cloudinary.config({
@@ -12,17 +8,3 @@ cloudinary.config({
 })
 
 module.exports = cloudinary;
-
-// exports.uploads = (file, folder) => {
-//     return new Promise(resolve => {
-//         cloudinary.uploader.upload(file, (result) => {
-//             resolve({
-//                 url: result.url,
-//                 id: result.public._id
-//             })
-//         }, {
-//             resource_type: "auto",
-//             folder: folder
-//         })
-//     })
-// }
