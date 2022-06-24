@@ -42,6 +42,9 @@ Stretch Goals:
 
 Major Hurdles:
 - Had a lot of trouble getting Multer to work.
+
+
+Things To Do:
 - Users should not be able to edit other people's meal preps.
 
 

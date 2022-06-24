@@ -5,6 +5,7 @@ const Schema = mongoose.Schema
 const recipeSchema = new Schema ({
 	mealName: String,
 	image: String,
+	cloudinary_id: String,
     notes: String,
     ingredients: [String],
 	instructions: [String],
