@@ -33,3 +33,15 @@ const AddInstruction = () => {
         instructionsInputList.appendChild(createInstructionField)
     
 }
+
+const editImage = () => {
+    
+    let editImage = document.createElement('input')
+    editImage.setAttribute("name", "image")
+    editImage.setAttribute("type", "file")
+    editImage.setAttribute("class", "form-control form-control-lg")
+    editImage.setAttribute("id", "formFileLg")
+
+    let editImageField = document.querySelector("#imageBox")
+    editImageField.appendChild(editImage)
+}

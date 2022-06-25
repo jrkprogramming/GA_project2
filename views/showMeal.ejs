@@ -100,8 +100,16 @@
     <br><br>
 
     <form action="/mealPrep/<%= recipe._id %>/edit">
-        <input class="btn btn-outline-primary" type="submit" value="EDIT MEAL" />
+        <input class="btn btn-outline-primary" type="submit" value="EDIT MEAL INFO" />
     </form>
+
+    <br>
+
+    <form action="/mealPrep/<%= recipe._id %>/editMealPhoto">
+        <input class="btn btn-outline-primary" type="submit" value="EDIT MEAL PHOTO" />
+    </form>
+
+
 
     <br>
 
@@ -113,5 +121,8 @@
 
 
 </div>
+
+<script type="text/javascript" src="/dynamic.js"></script>
+
 </body>
 </html>

@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ 
-  extended: false 
+  extended: true 
 }));
 app.use(bodyParser.json())
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- <form action="/mealPrep/<%= recipe._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+
+    <label for="formFileLg" class="form-label">Edit Photo for <%= recipe.mealName %> </label>
+    <input class="form-control form-control-lg" id="formFileLg" type="file" name="image" />
+
+    <input type="submit" value="UPDATE IMAGE" class="btn btn-outline-primary" style="padding: 20px">
+</form> -->
+
+<form action="/mealPrep/<%= recipe._id %>/editPhoto?_method=PUT" method="POST" enctype="multipart/form-data">
+
+
+    <input hidden class="form-control form-control-lg" type="text" name="mealName" value="<%= recipe.mealName %>" aria-label=".form-control-lg example">
+
+    <br><br>
+
+    <div>
+        <label for="formFileLg" class="form-label">Please include a photo of your meal prep!</label>
+        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image" placeholder="">
+    </div>
+    <!-- <div id="imageBox">
+        <button onclick="editImage()">Change your image?</button>
+    </div> -->
+
+    <!-- <br><br> -->
+
+    <div class="form-floating">
+        <label for="floatingTextarea">About:</label>
+        <textarea hidden class="form-control" placeholder="Write a description of your meal here." id="floatingTextarea" style="height: 100px" name="notes"><%= recipe.notes %></textarea>
+    </div>
+
+    <br><br>
+
+    Ingredients: 
+
+    <div class="ingredients form-floating mb-3">
+    <% recipe.ingredients.map(function(meal, index){ %>
+
+            <input hidden type="text" class="form-control" id="floatingInput" name="ingredients" value="<%= recipe.ingredients[index] %>">
+        
+    <% }) %> 
+    </div>
+
+    <br>
+
+    <div>
+        <button hidden type="button" id="ingreButton" onclick="AddIngredient()" class="btn btn-primary btn-sm">ADD AN INGREDIENT</button>
+    </div>
+
+
+    <br><br>
+
+    Instructions: 
+
+
+    <div class="instructions form-floating">
+    <% recipe.instructions.map(function(meal, index){ %>
+        <br>
+
+            <textarea hidden class="form-control" id="floatingTextarea2" style="height: 100px" name="instructions" type="text"><%= recipe.instructions[index] %></textarea>
+
+    <% }) %> 
+    </div>
+
+    <br>
+
+    <div>
+        <button hidden type="button" id="instrucButton" onclick="AddInstruction()" class="btn btn-primary btn-sm">ADD AN INSTRUCTION</button>
+    </div>
+
+    <br><br>
+
+    Protein: <input hidden name="protein" type="number" value="<%= recipe.protein %>" style="width: 4em">g
+
+    <br><br>
+
+    Fat: <input hidden name="fat" type="number" value="<%= recipe.fat %>" style="width: 4em">g
+
+    <br><br>
+
+    Carbs: <input hidden name="carbs" type="number" value="<%= recipe.carbs %>" style="width: 4em">g
+
+    <br><br>
+
+    Calories: <input hidden name="calories" type="number" value="<%= recipe.calories %>" style="width: 4em"> kcal
+
+    <br><br>
+
+    <input type="submit" value="SAVE CHANGES" class="btn btn-outline-primary" style="padding: 20px">
+
+</form>
+
+</body>
+</html>
